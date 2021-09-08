@@ -86,7 +86,7 @@ describe('This is a possible title', () => {
         userEvent.type(screen.getByTestId('owner'), 'Edgar');
         userEvent.type(screen.getByTestId('date'), '2021-12-10');
         userEvent.type(screen.getByTestId('time'), '10:30');
-        userEvent.type(screen.getByTestId('symptom'), 'Barks and is a cat.');
+        userEvent.type(screen.getByTestId('symptom'), 'Barks but is a cat.');
 
         const btnSubmit = screen.getByTestId('btn-submit');
         //fireEvent.click(btnSubmit);

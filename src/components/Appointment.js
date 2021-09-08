@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Appointment = ({appointment, deleteAppointment}) => ( 
-    <div className="appointment">
+    <div data-testid="appointment" className="appointment">
         <p>Pet: <span>{appointment.pet}</span> </p>
         <p>Owner: <span>{appointment.owner}</span> </p>
         <p>Date: <span>{appointment.date}</span> </p>
@@ -11,6 +11,7 @@ const Appointment = ({appointment, deleteAppointment}) => (
         <button
             className="button delete u-full-width"
             onClick={ () => deleteAppointment(appointment.id)  }
+            data-testid="btn-delete"
         >Delete &times;</button>
     </div>
 );

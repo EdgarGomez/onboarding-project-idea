@@ -34,7 +34,7 @@ function App() {
 
   return (
     <Fragment>
-      <h1>Veterinarian appointments</h1>
+      <h1 data-testid="app-name">Veterinarian appointments</h1>
 
       <div className="container">
         <div className="row">
@@ -44,7 +44,7 @@ function App() {
               />
           </div>
           <div className="one-half column">
-              <h2>{title}</h2>
+              <h2 data-testid="dynamic-title">{title}</h2>
               {appointments.map(appointment => (
                 <Appointment
                   key={appointment.id}
