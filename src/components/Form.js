@@ -33,6 +33,8 @@ const Form = ({createAppointment}) => {
 
         appointment.id = uuid();
 
+        console.log(appointment);
+
         createAppointment(appointment);
 
         updateAppointment({
@@ -46,15 +48,16 @@ const Form = ({createAppointment}) => {
 
     return ( 
         <Fragment>
-            <h2>Create Appointment</h2>
+            <h2 data-testid="title">Create Appointment</h2>
 
-            { error ? <p className="alert-error">All fields are required.</p>     : null }
+            { error ? <p data-testid="alert" className="alert-error">All fields are required.</p> : null }
 
             <form
                 onSubmit={submitAppointment}
             >
                 <label>Pet Name</label>
                 <input 
+                    data-testid="pet"
                     type="text"
                     name="pet"
                     className="u-full-width"
@@ -65,6 +68,7 @@ const Form = ({createAppointment}) => {
 
                 <label>Owner Name</label>
                 <input 
+                    data-testid="owner"
                     type="text"
                     name="owner"
                     className="u-full-width"
@@ -75,6 +79,7 @@ const Form = ({createAppointment}) => {
 
                 <label>Date</label>
                 <input 
+                    data-testid="date"
                     type="date"
                     name="date"
                     className="u-full-width"
@@ -84,6 +89,7 @@ const Form = ({createAppointment}) => {
 
                 <label>Time</label>
                 <input 
+                    data-testid="time"
                     type="time"
                     name="time"
                     className="u-full-width"
@@ -93,6 +99,7 @@ const Form = ({createAppointment}) => {
 
                 <label>Symptom</label>
                 <textarea
+                    data-testid="symptom"
                     className="u-full-width"
                     name="symptom"
                     onChange={updateState}
@@ -100,6 +107,7 @@ const Form = ({createAppointment}) => {
                 ></textarea>
 
                 <button
+                    data-testid="btn-submit"
                     type="submit"
                     className="u-full-width button-primary"
                 >Add Appointment</button>
