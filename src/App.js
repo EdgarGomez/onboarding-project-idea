@@ -34,7 +34,7 @@ function App() {
 
   return (
     <Fragment>
-      <h1 data-testid="app-name">Veterinarian appointments</h1>
+      <h1 data-testid="app-name" data-cy="title">Veterinarian appointments</h1>
 
       <div className="container">
         <div className="row">

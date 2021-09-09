@@ -53,10 +53,12 @@ const Form = ({createAppointment}) => {
             { error ? <p data-testid="alert" className="alert-error">All fields are required.</p> : null }
 
             <form
+                data-cy="form-appointments"
                 onSubmit={submitAppointment}
             >
                 <label>Pet Name</label>
                 <input 
+                    data-cy="pet-input"
                     data-testid="pet"
                     type="text"
                     name="pet"
@@ -68,6 +70,7 @@ const Form = ({createAppointment}) => {
 
                 <label>Owner Name</label>
                 <input 
+                    data-cy="owner-input"
                     data-testid="owner"
                     type="text"
                     name="owner"
@@ -79,6 +82,7 @@ const Form = ({createAppointment}) => {
 
                 <label>Date</label>
                 <input 
+                    data-cy="date-input"
                     data-testid="date"
                     type="date"
                     name="date"
@@ -89,6 +93,7 @@ const Form = ({createAppointment}) => {
 
                 <label>Time</label>
                 <input 
+                    data-cy="time-input"
                     data-testid="time"
                     type="time"
                     name="time"
@@ -99,6 +104,7 @@ const Form = ({createAppointment}) => {
 
                 <label>Symptom</label>
                 <textarea
+                    data-cy="symptom-input"
                     data-testid="symptom"
                     className="u-full-width"
                     name="symptom"
@@ -111,6 +117,8 @@ const Form = ({createAppointment}) => {
                     type="submit"
                     className="u-full-width button-primary"
                 >Add Appointment</button>
+
+                <a data-cy="vet-link" target="_blank" href="http://web.applapobla.es/stores/s/232/clinica-veterinaria-poblavet?lang=es">More vet options</a>
             </form>
         </Fragment>
     );
