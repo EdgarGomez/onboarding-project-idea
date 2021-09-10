@@ -7,7 +7,6 @@ describe('<Form />', () => {
 
         cy.get('[data-testid=alert]')
             .should('exist')
-            .should('have.class', 'alert-error')
             .invoke('text')
             .should('equal', 'All fields are required.');
 
@@ -28,7 +27,6 @@ describe('<Form />', () => {
 
         cy.get('[data-testid=alert]')
             .should('exist')
-            .should('have.class', 'alert-error')
             .invoke('text')
             .should('equal', 'All fields are required.');
         
@@ -40,7 +38,6 @@ describe('<Form />', () => {
     it('<Appointment /> Check appointments and delete theme', () => {
         cy.get('[data-testid=appointment]')
             .should('exist')
-            .should('have.class', 'appointment')
 
         cy.get('[data-testid=appointment] [data-testid=btn-delete]').click({multiple:true})
     })

@@ -3,7 +3,7 @@
 exports[`Testing the App <App /> Verify appointments in the DOM 1`] = `
 Array [
   <div
-    class="appointment"
+    class="sc-eCstlR hIpDvh appointment"
     data-testid="appointment"
   >
     <p>
@@ -42,7 +42,7 @@ Array [
        
     </p>
     <button
-      class="button delete u-full-width"
+      class="sc-hKgJUU kXkYhu button"
       data-testid="btn-delete"
     >
       Delete ×

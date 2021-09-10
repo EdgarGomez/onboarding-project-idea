@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import uuid from 'uuid/v4';
+import { H2Title, AddButton, Alert, Input, Label, Link } from './StyledComponents';
 
 const Form = ({createAppointment}) => {
 
@@ -48,61 +49,57 @@ const Form = ({createAppointment}) => {
 
     return ( 
         <Fragment>
-            <h2 data-testid="title">Create Appointment</h2>
+            <H2Title data-testid="title">Create Appointment</H2Title>
 
-            { error ? <p data-testid="alert" className="alert-error">All fields are required.</p> : null }
+            { error ? <Alert data-testid="alert">All fields are required.</Alert> : null }
 
             <form
                 data-cy="form-appointments"
                 onSubmit={submitAppointment}
             >
-                <label>Pet Name</label>
-                <input 
+                <Label>Pet Name</Label>
+                <Input 
                     data-cy="pet-input"
                     data-testid="pet"
                     type="text"
                     name="pet"
-                    className="u-full-width"
                     placeholder="Pet Name"
                     onChange={updateState}
                     value={pet}
                 />
 
-                <label>Owner Name</label>
-                <input 
+                <Label>Owner Name</Label>
+                <Input 
                     data-cy="owner-input"
                     data-testid="owner"
                     type="text"
                     name="owner"
-                    className="u-full-width"
                     placeholder="Owner Name"
                     onChange={updateState}
                     value={owner}
                 />
 
-                <label>Date</label>
-                <input 
+                <Label>Date</Label>
+                <Input 
                     data-cy="date-input"
                     data-testid="date"
                     type="date"
                     name="date"
-                    className="u-full-width"
                     onChange={updateState}
                     value={date}
                 />
 
-                <label>Time</label>
-                <input 
+                <Label>Time</Label>
+                <Input 
                     data-cy="time-input"
                     data-testid="time"
                     type="time"
                     name="time"
-                    className="u-full-width"
                     onChange={updateState}
                     value={time}
                 />
 
-                <label>Symptom</label>
+                <Label>Symptom</Label>
                 <textarea
                     data-cy="symptom-input"
                     data-testid="symptom"
@@ -112,13 +109,13 @@ const Form = ({createAppointment}) => {
                     value={symptom}
                 ></textarea>
 
-                <button
+                <AddButton
                     data-testid="btn-submit"
                     type="submit"
-                    className="u-full-width button-primary"
-                >Add Appointment</button>
+                    className=""
+                >Add Appointment</AddButton>
 
-                <a data-cy="vet-link" target="_blank" href="http://web.applapobla.es/stores/s/232/clinica-veterinaria-poblavet?lang=es">More vet options</a>
+                <Link color="white" data-cy="vet-link" target="_blank" href="http://web.applapobla.es/stores/s/232/clinica-veterinaria-poblavet?lang=es">More vet options</Link>
             </form>
         </Fragment>
     );

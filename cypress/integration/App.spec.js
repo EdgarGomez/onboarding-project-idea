@@ -39,8 +39,6 @@ describe('<App />', () => {
         cy.get('[data-testid=btn-submit]')
             .should('exist')
             .should('have.text', 'Add Appointment')
-            .should('have.class', 'button-primary')
-            .and('have.class', 'u-full-width')
 
         cy.get('[data-cy=vet-link]')
             .should('exist')

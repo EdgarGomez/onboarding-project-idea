@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { H1Title, H2Title } from './components/StyledComponents';
 import Form from './components/Form';
 import Appointment from './components/Appointment';
 
@@ -34,7 +35,7 @@ function App() {
 
   return (
     <Fragment>
-      <h1 data-testid="app-name" data-cy="title">Veterinarian appointments</h1>
+      <H1Title data-testid="app-name" data-cy="title">Veterinarian appointments</H1Title>
 
       <div className="container">
         <div className="row">
@@ -44,7 +45,7 @@ function App() {
               />
           </div>
           <div className="one-half column">
-              <h2 data-testid="dynamic-title">{title}</h2>
+              <H2Title data-testid="dynamic-title">{title}</H2Title>
               {appointments.map(appointment => (
                 <Appointment
                   key={appointment.id}
