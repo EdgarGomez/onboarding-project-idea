@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const white = "#ffffff";
-const primary = "#33c3f0";
-const secondary = "#c10059";
+const white: string = "#ffffff";
+const primary: string = "#33c3f0";
+const secondary: string = "#c10059";
 
 export const H1Title = styled.h1`
     color: ${white};

@@ -1,7 +1,12 @@
 import React from 'react';
 import { DelButton, Card } from './StyledComponents';
 
-const Appointment = ({appointment, deleteAppointment}) => ( 
+interface Props {
+    appointment: any,
+    deleteAppointment: any,
+}
+
+const Appointment = ({appointment, deleteAppointment}: Props) => ( 
     <Card data-testid="appointment">
         <p>Pet: <span>{appointment.pet}</span> </p>
         <p>Owner: <span>{appointment.owner}</span> </p>

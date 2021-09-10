@@ -3,7 +3,7 @@
 exports[`Testing the App <App /> Verify appointments in the DOM 1`] = `
 Array [
   <div
-    class="sc-eCstlR hIpDvh appointment"
+    class="sc-eCstlR hIpDvh"
     data-testid="appointment"
   >
     <p>
