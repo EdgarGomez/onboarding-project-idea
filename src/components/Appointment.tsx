@@ -1,9 +1,10 @@
 import React from 'react';
 import { DelButton, Card } from './StyledComponents';
+import {Appointment as AppointmentInterface} from '../interfaces/interfaces';
 
 interface Props {
-    appointment: any,
-    deleteAppointment: any,
+    appointment: AppointmentInterface,
+    deleteAppointment: Function,
 }
 
 const Appointment = ({appointment, deleteAppointment}: Props) => ( 

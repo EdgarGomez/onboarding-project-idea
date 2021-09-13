@@ -1,28 +1,31 @@
 import React, { Fragment, useState } from 'react';
-import uuid from 'uuid/v4';
+import {v4 as uuidv4} from 'uuid';
 import { H2Title, AddButton, Alert, Input, Label, Link } from './StyledComponents';
+import {Appointment as AppointmentInterface} from '../interfaces/interfaces';
 
-const Form = ({createAppointment}) => {
+const Form = ({createAppointment}: any) => {
 
-    const [appointment, updateAppointment] = useState({
+    const [appointment, updateAppointment] = useState<AppointmentInterface>({
         pet: '',
         owner: '',
         date: '',
         time: '',
-        symptom: ''
+        symptom: '',
+        id: ''
     });
     const [ error, updateError ] = useState(false)
 
-    const updateState = e => {
+    const updateState = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+        e.preventDefault();
         updateAppointment({
             ...appointment,
-            [e.target.name]: e.target.value 
+            [e.currentTarget.name]: e.currentTarget.value 
         })
     }
 
     const { pet, owner, date, time, symptom } = appointment;
 
-    const submitAppointment = e => {
+    const submitAppointment = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if(pet.trim() === '' || owner.trim() === ''  || date.trim() === ''  || time.trim() === ''  || symptom.trim() === '' ){
@@ -32,7 +35,7 @@ const Form = ({createAppointment}) => {
 
         updateError(false);
 
-        appointment.id = uuid();
+        appointment.id = uuidv4();
 
         console.log(appointment);
 
@@ -43,12 +46,13 @@ const Form = ({createAppointment}) => {
             owner: '',
             date: '',
             time: '',
-            symptom: ''
+            symptom: '',
+            id: ''
         })
     }
 
     return ( 
-        <Fragment>
+        <>
             <H2Title data-testid="title">Create Appointment</H2Title>
 
             { error ? <Alert data-testid="alert">All fields are required.</Alert> : null }
@@ -64,7 +68,7 @@ const Form = ({createAppointment}) => {
                     type="text"
                     name="pet"
                     placeholder="Pet Name"
-                    onChange={updateState}
+                    onChange={(e) => updateState(e)}
                     value={pet}
                 />
 
@@ -75,7 +79,7 @@ const Form = ({createAppointment}) => {
                     type="text"
                     name="owner"
                     placeholder="Owner Name"
-                    onChange={updateState}
+                    onChange={(e) => updateState(e)}
                     value={owner}
                 />
 
@@ -85,7 +89,7 @@ const Form = ({createAppointment}) => {
                     data-testid="date"
                     type="date"
                     name="date"
-                    onChange={updateState}
+                    onChange={(e) => updateState(e)}
                     value={date}
                 />
 
@@ -95,7 +99,7 @@ const Form = ({createAppointment}) => {
                     data-testid="time"
                     type="time"
                     name="time"
-                    onChange={updateState}
+                    onChange={(e) => updateState(e)}
                     value={time}
                 />
 
@@ -105,7 +109,7 @@ const Form = ({createAppointment}) => {
                     data-testid="symptom"
                     className="u-full-width"
                     name="symptom"
-                    onChange={updateState}
+                    onChange={(e) => updateState(e)}
                     value={symptom}
                 ></textarea>
 
@@ -117,7 +121,7 @@ const Form = ({createAppointment}) => {
 
                 <Link color="white" data-cy="vet-link" target="_blank" href="http://web.applapobla.es/stores/s/232/clinica-veterinaria-poblavet?lang=es">More vet options</Link>
             </form>
-        </Fragment>
+        </>
     );
 }
  

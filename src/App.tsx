@@ -2,18 +2,19 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { H1Title, H2Title } from './components/StyledComponents';
 import Form from './components/Form';
 import Appointment from './components/Appointment';
+import {Appointment as AppointmentInterface} from './interfaces/interfaces';
 
 function App() {
 
-  let initialAppointments = JSON.parse(localStorage.getItem('appointments'));
+  let initialAppointments = JSON.parse(localStorage.getItem('appointments') || '[]');
   if(!initialAppointments) {
     initialAppointments = [];
   }
 
-  const [appointments, saveAppointments] = useState(initialAppointments);
+  const [appointments, saveAppointments] = useState<AppointmentInterface[]>(initialAppointments);
 
   useEffect( () => {
-      let initialAppointments = JSON.parse(localStorage.getItem('appointments'));
+      let initialAppointments = JSON.parse(localStorage.getItem('appointments') || '[]');
 
       if(initialAppointments) {
         localStorage.setItem('appointments', JSON.stringify(appointments))
@@ -22,16 +23,16 @@ function App() {
       }
   }, [appointments] );
 
-  const createAppointment = appointment => {
+  const createAppointment = (appointment: AppointmentInterface) => {
     saveAppointments([ ...appointments, appointment ]);
   }
 
-  const deleteAppointment = id => {
+  const deleteAppointment = (id: string) => {
      const newAppointments = appointments.filter(appointment => appointment.id !== id );
      saveAppointments(newAppointments);
   }
 
-  const title = appointments.length === 0 ? 'There are no appointments yet.' : 'Manage your Appointments';
+  const title: string = appointments.length === 0 ? 'There are no appointments yet.' : 'Manage your Appointments';
 
   return (
     <Fragment>
