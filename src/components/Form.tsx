@@ -1,9 +1,23 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import {v4 as uuidv4} from 'uuid';
 import { H2Title, AddButton, Alert, Input, Label, Link } from './StyledComponents';
 import {Appointment as AppointmentInterface} from '../interfaces/interfaces';
+import { gql, useMutation } from '@apollo/client';
 
-const Form = ({createAppointment}: any) => {
+const CREATE_APPOINTMENT = gql`
+  mutation CreateAppointment($owner: String!, $pet: String!, $date: String!, $time: String!, $symptom: String!) {
+    createAppointment(owner: $owner, pet: $pet, date: $date, time: $time, symptom: $symptom,) {
+      id
+      owner,
+      pet,
+      date,
+      time,
+      symptom
+    }
+  }
+`;
+
+const Form = () => {
 
     const [appointment, updateAppointment] = useState<AppointmentInterface>({
         pet: '',
@@ -13,7 +27,10 @@ const Form = ({createAppointment}: any) => {
         symptom: '',
         id: ''
     });
-    const [ error, updateError ] = useState(false)
+    const [ alertError, updateError ] = useState(false)
+    const [createAppointment, { data, loading, error }] = useMutation(CREATE_APPOINTMENT);
+    if (loading) return <H2Title>Submiting...</H2Title>;
+    if (error) return <H2Title>Submission error! {error.message}</H2Title>;
 
     const updateState = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         e.preventDefault();
@@ -36,10 +53,7 @@ const Form = ({createAppointment}: any) => {
         updateError(false);
 
         appointment.id = uuidv4();
-
-        console.log(appointment);
-
-        createAppointment(appointment);
+        createAppointment({ variables: { id: appointment.id, owner: appointment.owner, pet: appointment.pet, date: appointment.date, time: appointment.time, symptom: appointment.symptom } });
 
         updateAppointment({
             pet: '',
@@ -55,7 +69,7 @@ const Form = ({createAppointment}: any) => {
         <>
             <H2Title data-testid="title">Create Appointment</H2Title>
 
-            { error ? <Alert data-testid="alert">All fields are required.</Alert> : null }
+            { alertError ? <Alert data-testid="alert">All fields are required.</Alert> : null }
 
             <form
                 data-cy="form-appointments"
