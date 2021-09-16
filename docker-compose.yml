@@ -4,10 +4,10 @@ services:
   app:
     container_name: app-dev
     image: app-dev
+    tty: true
     build:
       context: .
       target: development
-      dockerfile: Dockerfile
     volumes:
       - .:/app
     ports:

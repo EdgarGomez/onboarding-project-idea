@@ -12,4 +12,4 @@ RUN npm install -g json-graphql-server
 EXPOSE 3000
 EXPOSE 5000
 # Start the app
-CMD [ "sleep", "infinity" ]
+CMD [ "npm", "start" ]

@@ -21,11 +21,11 @@
     "uuidv4": "^6.2.12"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "json-graphql-server db.js --p 5000 --h 0.0.0.0 & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "docker-compose docker-compose.yml up"
+    "dev": "docker-compose up"
   },
   "eslintConfig": {
     "extends": "react-app"
