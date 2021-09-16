@@ -18,7 +18,7 @@ const REMOVE_APPOINTMENT = gql`
 
 const Appointment = ({appointment}: Props) => { 
 
-    const [removeAppointment, { data, loading, error }] = useMutation(REMOVE_APPOINTMENT);
+    const [removeAppointment, { loading, error }] = useMutation(REMOVE_APPOINTMENT);
     if (loading) return <H2Title>Submiting...</H2Title>;
     if (error) return <H2Title>Submission error! {error.message}</H2Title>;
 

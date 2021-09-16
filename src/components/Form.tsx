@@ -28,7 +28,7 @@ const Form = () => {
         id: ''
     });
     const [ alertError, updateError ] = useState(false)
-    const [createAppointment, { data, loading, error }] = useMutation(CREATE_APPOINTMENT);
+    const [createAppointment, { loading, error }] = useMutation(CREATE_APPOINTMENT);
     if (loading) return <H2Title>Submiting...</H2Title>;
     if (error) return <H2Title>Submission error! {error.message}</H2Title>;
 
